@@ -37,6 +37,8 @@ First you'll have to ask docker to build the images necessary for your orchestra
 that will pull all of the base images from the internet (the first line of both php|python/Dockerfile shows the base image to use) and run the list of commands to get to the state of the image necessary to run our apps.
 
 ### Running
+
+#### MYSQL
 Now, we need to run mysql first and give it some time to bootstrap itself and be ready to receive connection:
 	
 	$ docker-compose up -d mysql
@@ -55,6 +57,13 @@ That will execute /bin/sh in the container with the service named "mysql" in our
 	$ mysql -P3306 -uroot -proot
 
 
+#### Apps
+
+As soon as mysql is running, we can run all of the other applications:
+
+	$ docker-compose up
+
+You can now access http://localhost:{8000,8001,8002,8003}/ and hit the 4 different services.
 
 
 
