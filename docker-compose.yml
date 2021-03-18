@@ -65,3 +65,20 @@ services:
       MYSQL_DATABASE: test_database
       MYSQL_PASSWORD: root
 
+  #live example with local file access
+  dotnet:
+    depends_on:
+    - mysql
+    build: ./dotnet/
+    volumes:
+      - ./dotnet/:/usr/src/app
+    ports:
+      - 8004:8000
+    entrypoint: dotnet run --urls http://0.0.0.0:8000
+    environment:
+      MYSQL_USER: root
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: test_database
+      MYSQL_PASSWORD: root
+
