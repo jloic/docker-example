@@ -4,6 +4,13 @@
 This example is comprised of minimal application in two directories (python and php). Each one of them have a Dockerfile in the directory, describing how to build the image to run the application. You can look into python/Dockerfile to see how to install the dependencies on the base image. The ENTRYPOINT describes the command the container will run once up.
 Here what is important to note is that you have 2 Dockerfile, so docker will build 2 separate images only.
 
+## Setup/Instalation
+Before you start you need to install docker/docker-compose for you operating system:
+ * Linux: apt/yum/apk whatever you need to instal docker,docker-compose and mysql-client
+ * Windows: You'll need to install docker for windows and if you want the mysql command line tool, you can install chocolatey (https://chocolatey.org - Highly recommended) and then run 
+ 	cmd$ choco.exe install mysql-cli
+ * Mac: docker for mac, homebrew + brew install mysql-client
+
 ## Orchestration
 In our example here, we'll use docker-compose to "orchestrate" the containers. In this example, we'll use the docker-compose abstraction to to also build the images but you could build those images directly with docker (docker build ./php/).
 The orchestration layer should be considered as a way to describe which services should run and how they can interact with eachother. You have to think of the containers as running in a completely isolated environement and the orchestration layer gives you tools to create "doors" to this isolated environemnet through port mapping.
