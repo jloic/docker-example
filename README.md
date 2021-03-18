@@ -56,6 +56,10 @@ That will execute /bin/sh in the container with the service named "mysql" in our
 
 	$ mysql -P3306 -uroot -proot
 
+Now that we have our database running we can create a simple table and add one item in it. We have an example it "exapmle.sql". To execute it you can run :
+	$  cat example.sql | docker-compose  exec -T mysql mysql -uroot -proot test_database
+
+This will connect to the running mysql container, run the command "mysql -uroot -proot test_database", which is the command line client and then execute the content of example.sql through stdin. It's just a create table and an insert.
 
 #### Apps
 
